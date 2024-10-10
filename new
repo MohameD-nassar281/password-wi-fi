@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحديث بيانات الواي فاي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>تحديث بيانات الواي فاي</h1>
+    <input type="text" id="ssid" placeholder="اسم الشبكة (SSID)">
+    <input type="text" id="password" placeholder="كلمة المرور">
+    <button onclick="updateQRCode()">تحديث QR Code</button>
+    <div id="qrCode"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-qrcode/1.0/jquery.qrcode.min.js"></script>
+    
+    <script>
+        function updateQRCode() {
+            const ssid = $('#ssid').val();
+            const password = $('#password').val();
+            const qrData = `WIFI:S:${ssid};T:WPA;P:${password};;`;
+            $('#qrCode').empty().qrcode(qrData);
+        }
+    </script>
+</body>
+</html>
